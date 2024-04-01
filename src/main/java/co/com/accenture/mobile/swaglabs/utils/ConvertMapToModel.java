@@ -1,0 +1,15 @@
+package co.com.accenture.mobile.swaglabs.utils;
+
+
+import co.com.accenture.mobile.swaglabs.models.User;
+
+import java.util.Map;
+
+public class ConvertMapToModel {
+    public static User convertMapToUser(Map<String, String> map) {
+        return User.builder()
+                .email(map.get("email"))
+                .password(map.get("password"))
+                .build();
+    }
+}
