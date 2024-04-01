@@ -4,11 +4,11 @@
     @login @userNotLogged @happyPath
     Scenario Outline: Login successfull
       Given "Daniel" is on swaglabs app
-      When login in app
-        | username   | password   |
-        | <username> | <password> |
+      When he login in app from profile
+        | email   | password   |
+        | <email> | <password> |
       Then see the correct username
 
       Examples:
-        | username      | password     |
+        | email         | password     |
         | standard_user | secret_sauce |

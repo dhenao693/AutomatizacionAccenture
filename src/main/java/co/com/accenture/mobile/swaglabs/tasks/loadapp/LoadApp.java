@@ -1,6 +1,6 @@
 package co.com.accenture.mobile.swaglabs.tasks.loadapp;
 
-import co.com.accenture.mobile.swaglabs.interactions.WaitPage;
+import co.com.accenture.mobile.swaglabs.interactions.waits.WaitPage;
 import net.serenitybdd.screenplay.Actor;
 import net.serenitybdd.screenplay.Task;
 import net.serenitybdd.screenplay.Tasks;

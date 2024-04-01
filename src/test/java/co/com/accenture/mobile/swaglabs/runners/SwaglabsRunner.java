@@ -7,10 +7,9 @@ import org.junit.runner.RunWith;
 @RunWith(CucumberWithSerenity.class)
 @CucumberOptions(
         features = {
-                "src/test/resources/features/login.feature",
-                "src/test/resources/features/buy.feature"
+                "src/test/resources/features/login.feature"
         },
-        glue = {"co/com/pragma/web/demoblaze/stepdefinitions"},
+        glue = {"co/com/accenture/mobile/swaglabs/stepdefinitions"},
         snippets = CucumberOptions.SnippetType.CAMELCASE
 )
 public class SwaglabsRunner {
