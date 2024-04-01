@@ -22,7 +22,7 @@ public class Hook {
         theActor(Constants.DEFAULT_USER);
     }
 
-    @Given("{string} is on is on swaglabs app")
+    @Given("{string} is on swaglabs app")
     public void isOnCinemarkApp(String actorName) {
         theActor(actorName).attemptsTo(
                 LoadApp.toStart()
