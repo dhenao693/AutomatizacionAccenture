@@ -11,9 +11,8 @@ public class LoadApp implements Task {
     @Override
     public <T extends Actor> void performAs(T actor) {
         actor.attemptsTo(
-                WaitPage.aSeconds(3)
+                WaitPage.aSeconds(2)
         );
-
     }
 
     public static LoadApp toStart() {

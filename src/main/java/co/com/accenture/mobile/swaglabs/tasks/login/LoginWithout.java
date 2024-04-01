@@ -14,12 +14,13 @@ public class LoginWithout implements Task {
     private List<Map<String, String>> users;
     private String labelTODoNotFill;
 
-    public static LoginWithout theField(List<Map<String, String>> users, String field){
-        return Tasks.instrumented(LoginWithout.class,users,field);
+    public static LoginWithout theField(List<Map<String, String>> users, String field) {
+        return Tasks.instrumented(LoginWithout.class, users, field);
     }
+
     @Override
     public <T extends Actor> void performAs(T actor) {
-        actor.attemptsTo(Check.whether("user".equalsIgnoreCase(labelTODoNotFill))
+        actor.attemptsTo(Check.whether("username".equalsIgnoreCase(labelTODoNotFill))
                 .andIfSo(LoginUser.inApp(users).withoutUser())
                 .otherwise(LoginUser.inApp(users).withoutPassword())
         );
