@@ -8,7 +8,7 @@ import java.util.Map;
 public class ConvertMapToModel {
     public static User convertMapToUser(Map<String, String> map) {
         return User.builder()
-                .email(map.get("email"))
+                .username(map.get("username"))
                 .password(map.get("password"))
                 .build();
     }

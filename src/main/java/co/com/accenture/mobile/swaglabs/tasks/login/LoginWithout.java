@@ -19,7 +19,7 @@ public class LoginWithout implements Task {
     }
     @Override
     public <T extends Actor> void performAs(T actor) {
-        actor.attemptsTo(Check.whether("user".equalsIgnoreCase(labelTODoNotFill))
+        actor.attemptsTo(Check.whether("username".equalsIgnoreCase(labelTODoNotFill))
                 .andIfSo(LoginUser.inApp(users).withoutUser())
                 .otherwise(LoginUser.inApp(users).withoutPassword())
         );

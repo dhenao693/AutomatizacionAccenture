@@ -1,13 +1,13 @@
 package co.com.accenture.mobile.swaglabs.tasks.login;
 
 import co.com.accenture.mobile.swaglabs.models.User;
-import lombok.AllArgsConstructor;
 import lombok.RequiredArgsConstructor;
 import net.serenitybdd.screenplay.Actor;
 import net.serenitybdd.screenplay.Task;
 import net.serenitybdd.screenplay.Tasks;
 import net.serenitybdd.screenplay.actions.Click;
 import net.serenitybdd.screenplay.actions.Enter;
+import net.serenitybdd.screenplay.conditions.Check;
 
 import java.util.List;
 import java.util.Map;
@@ -27,10 +27,16 @@ public class LoginUser implements Task {
     public <T extends Actor> void performAs(T actor) {
         User user = convertMapToUser(users.get(0));
         actor.attemptsTo(
-                Click.on(LBL_USER),
-                Enter.theValue(user.getEmail()).into(LBL_USER),
-                Click.on(LBL_PASSSWORD),
-                Enter.theValue(user.getPassword()).into(LBL_PASSSWORD),
+                Check.whether(fillUserName).andIfSo(
+                        Enter.theValue(user.getUsername()).into(LBL_USER))
+        );
+
+        actor.attemptsTo(
+                Check.whether(fillPassword).andIfSo(
+                Enter.theValue(user.getPassword()).into(LBL_PASSSWORD))
+        );
+
+        actor.attemptsTo(
                 Click.on(BTN_LOGIN)
         );
     }

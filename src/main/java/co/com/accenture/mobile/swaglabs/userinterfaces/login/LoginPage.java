@@ -18,7 +18,7 @@ public class LoginPage {
             .locatedForAndroid(AppiumBy.accessibilityId("test-LOGIN"))
             .locatedForIOS(AppiumBy.accessibilityId("empty"));
     public static final Target TXT_ERROR = Target.the("Text login error")
-            .locatedForAndroid(AppiumBy.accessibilityId("test-Error"))
+            .locatedForAndroid(By.xpath("//android.view.ViewGroup[@content-desc=\"test-Error\"]/android.widget.TextView"))
             .locatedForIOS(AppiumBy.accessibilityId("empty"));
 
 }
