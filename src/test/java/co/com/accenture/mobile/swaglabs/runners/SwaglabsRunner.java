@@ -11,6 +11,7 @@ import org.junit.runner.RunWith;
         },
         glue = {"co/com/accenture/mobile/swaglabs/stepdefinitions"},
         snippets = CucumberOptions.SnippetType.CAMELCASE
+//        ,tags = "@run"
 )
 public class SwaglabsRunner {
 }
