@@ -33,7 +33,7 @@ public class LoginUser implements Task {
 
         actor.attemptsTo(
                 Check.whether(fillPassword).andIfSo(
-                Enter.theValue(user.getPassword()).into(LBL_PASSSWORD))
+                        Enter.theValue(user.getPassword()).into(LBL_PASSSWORD))
         );
 
         actor.attemptsTo(

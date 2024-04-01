@@ -12,7 +12,7 @@
       Then see the home page to buy
 
       Examples:
-        | username         | password     |
+        | username      | password     |
         | standard_user | secret_sauce |
 
     @login @userNotLogged @unhappyPath

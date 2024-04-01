@@ -9,7 +9,7 @@ import static co.com.accenture.mobile.swaglabs.userinterfaces.home.HomePage.TXT_
 
 @NoArgsConstructor
 public class ValidateLogin implements Question<Boolean> {
-    public static ValidateLogin inScreen(){
+    public static ValidateLogin inScreen() {
         return new ValidateLogin();
     }
 
