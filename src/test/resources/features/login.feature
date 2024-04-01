@@ -7,7 +7,7 @@
       When he login in app from profile
         | email   | password   |
         | <email> | <password> |
-      Then see the correct username
+      Then see the home page to buy
 
       Examples:
         | email         | password     |
