@@ -62,7 +62,6 @@ dependencies {
     testImplementation 'io.github.bonigarcia:webdrivermanager:5.7.0'
     implementation group: 'net.serenity-bdd', name: 'serenity-screenplay', version: "$rootProject.ext.serenityVersion"
     implementation group: 'net.serenity-bdd', name: 'serenity-cucumber', version: "$rootProject.ext.serenityCucumberVersion"
-    implementation "net.serenity-bdd:serenity-core:$rootProject.ext.serenityCucumberVersion"
     implementation 'net.serenity-bdd:serenity-junit:3.2.5'
     compileOnly "org.projectlombok:lombok:$rootProject.ext.lombokVersion"
     annotationProcessor "org.projectlombok:lombok:$rootProject.ext.lombokVersion"

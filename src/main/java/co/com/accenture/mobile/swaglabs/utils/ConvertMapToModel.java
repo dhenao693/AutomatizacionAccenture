@@ -10,6 +10,9 @@ public class ConvertMapToModel {
         return User.builder()
                 .username(map.get("username"))
                 .password(map.get("password"))
+                .name(map.get("name"))
+                .lastname(map.get("lastname"))
+                .postalCode(map.get("postalCode"))
                 .build();
     }
 }

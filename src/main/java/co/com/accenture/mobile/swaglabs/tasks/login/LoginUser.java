@@ -1,6 +1,7 @@
 package co.com.accenture.mobile.swaglabs.tasks.login;
 
 import co.com.accenture.mobile.swaglabs.models.User;
+import co.com.accenture.mobile.swaglabs.utils.Constants;
 import lombok.RequiredArgsConstructor;
 import net.serenitybdd.screenplay.Actor;
 import net.serenitybdd.screenplay.Task;
@@ -15,6 +16,7 @@ import java.util.Map;
 import static co.com.accenture.mobile.swaglabs.userinterfaces.login.LoginPage.BTN_LOGIN;
 import static co.com.accenture.mobile.swaglabs.userinterfaces.login.LoginPage.LBL_PASSSWORD;
 import static co.com.accenture.mobile.swaglabs.userinterfaces.login.LoginPage.LBL_USER;
+import static co.com.accenture.mobile.swaglabs.utils.Constants.USER_IN_MEMORY;
 import static co.com.accenture.mobile.swaglabs.utils.ConvertMapToModel.convertMapToUser;
 
 @RequiredArgsConstructor
@@ -26,6 +28,8 @@ public class LoginUser implements Task {
     @Override
     public <T extends Actor> void performAs(T actor) {
         User user = convertMapToUser(users.get(0));
+        actor.remember(USER_IN_MEMORY,user);
+
         actor.attemptsTo(
                 Check.whether(fillUserName).andIfSo(
                         Enter.theValue(user.getUsername()).into(LBL_USER))
