@@ -34,7 +34,7 @@
         | username      | password     | product                | name   | lastname | postalCode |
         | standard_user | secret_sauce | Camisa Sauce Labs Bolt | Daniel | Henao    | 00522      |
 
-    @login @userNotLogged @unhappyPath @run
+    @login @userNotLogged @unhappyPath
     Scenario Outline: Buy product without label <withoutLabel>
       When he login in app from profile
         | username   | password   | name   | lastname   | postalCode   |

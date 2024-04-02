@@ -23,6 +23,8 @@ public class AddToCarForTheHome implements Task {
     public <T extends Actor> void performAs(T actor) {
         actor.should(seeThat(ValidateLogin.inScreen()));
         actor.remember(PRODUCT_IN_MEMORY, product);
+//        Agregar Scroll para seleccionar cualquier producto que este mas abajo
+//        actor.attemptsTo(Scroll.to(BTN_ADD_TO_CAR.of(product)));
         actor.attemptsTo(Click.on(BTN_ADD_TO_CAR.of(product)));
     }
 }

@@ -1,10 +1,10 @@
 package co.com.accenture.mobile.swaglabs.stepdefinitions;
 
-import co.com.accenture.mobile.swaglabs.interactions.buy.FIllUserFormWithout;
 import co.com.accenture.mobile.swaglabs.questions.SeeTheElement;
 import co.com.accenture.mobile.swaglabs.tasks.buy.add_to_car.AddToCarForTheHome;
 import co.com.accenture.mobile.swaglabs.tasks.buy.add_to_car.AddToCarForTheProductPage;
 import co.com.accenture.mobile.swaglabs.tasks.buy.pay.PayPurchase;
+import co.com.accenture.mobile.swaglabs.tasks.buy.pay.PayPurchaseWithout;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 
@@ -40,6 +40,6 @@ public class BuyStepdefinition {
 
     @When("go to pay the product without label {string}")
     public void goToPayTheProductWithoutLabel(String label) {
-        theActorInTheSpotlight().attemptsTo(FIllUserFormWithout.theLabel(label));
+        theActorInTheSpotlight().attemptsTo(PayPurchaseWithout.theLabel(label));
     }
 }
