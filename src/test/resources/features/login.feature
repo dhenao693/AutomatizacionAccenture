@@ -27,7 +27,7 @@
         | dhenaofailed  | secret_sauce    | username   |  |
         | standard_user | 123456789Failed | password   |  |
 
-    @login @userNotLogged @unhappyPath @run
+    @login @userNotLogged @unhappyPath
     Scenario Outline: Login without <fieldDoNotFill>
       When login in app without "<fieldDoNotFill>"
         | username   | password   |

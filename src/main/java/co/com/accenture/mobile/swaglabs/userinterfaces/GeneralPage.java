@@ -14,6 +14,4 @@ public class GeneralPage {
 
     public static final Target TXT_GENERIC = Target.the("")
             .locatedBy("//android.widget.TextView[@text='{0}']");
-
-
 }
