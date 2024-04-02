@@ -4,7 +4,7 @@
     Background:
       Given "Daniel" is on swaglabs app
 
-    @login @userNotLogged @happyPath
+    @buy @homePage @happyPath
     Scenario Outline: Buy product from home successfully
       When he login in app from profile
         | username   | password   | name   | lastname   | postalCode   |
@@ -21,7 +21,7 @@
         | standard_user | secret_sauce | Mochila Sauce Labs                | Adriana  | Henao    | 00922      |
 
 
-    @login @userNotLogged @happyPath
+    @buy @productPage @happyPath
     Scenario Outline: Buy product from product page successfully
       When he login in app from profile
         | username   | password   | name   | lastname   | postalCode   |
@@ -34,7 +34,7 @@
         | username      | password     | product                | name   | lastname | postalCode |
         | standard_user | secret_sauce | Camisa Sauce Labs Bolt | Daniel | Henao    | 00522      |
 
-    @login @userNotLogged @unhappyPath
+    @buy @whitoutLabel @unhappyPath
     Scenario Outline: Buy product without label <withoutLabel>
       When he login in app from profile
         | username   | password   | name   | lastname   | postalCode   |
