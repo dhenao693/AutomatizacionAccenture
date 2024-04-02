@@ -9,4 +9,10 @@ public class ProductPage {
             .locatedForIOS(AppiumBy.accessibilityId("empty"));
 
 
+    public static final Target BTN_ADD_TO_CAR = Target.the("")
+            .locatedForAndroid(AppiumBy.accessibilityId("test-AÑADIR A CARRITO"))
+            .locatedForIOS(AppiumBy.accessibilityId("empty"));
+
+
+
 }
