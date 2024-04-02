@@ -26,8 +26,6 @@ public class FIllUserFormWithout implements Task {
 
     @Override
     public <T extends Actor> void performAs(T actor) {
-
-
         switch (lblName) {
             case "name":
                 actor.attemptsTo(FillUserInfo.toPay(user).withoutName());

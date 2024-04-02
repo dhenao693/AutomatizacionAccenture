@@ -37,7 +37,6 @@ public class FillUserInfo implements Interaction {
 
         actor.attemptsTo(Click.on(BTN_CONTINUE));
 
-
     }
 
     public FillUserInfo withoutName() {
