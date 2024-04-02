@@ -1,91 +1,66 @@
-defaultTasks 'clean', 'test', 'aggregate'
-group = 'co.com.assenture.mobile.reto.swaglabs'
-version = '1.0'
+apply plugin: 'java'
+apply plugin: 'org.sonarqube'
+apply plugin: 'jacoco'
+apply plugin: 'application'
+apply plugin: "net.serenity-bdd.serenity-gradle-plugin"
 
-description = """Reto Assenture"""
-repositories {
-    mavenLocal()
-    mavenCentral()
+allprojects {
+    ext.baseVersion = "0.1"
+    ext.snapshotVersion = true
+
+    group = "org.sonarqube"
+    version = "$baseVersion" + (snapshotVersion ? "-SNAPSHOT" : "")
 }
 
 buildscript {
     repositories {
         maven {
+            url "https://repo1.maven.org/maven2/"
+        }
+        maven {
             url "https://plugins.gradle.org/m2/"
         }
+        mavenLocal()
     }
     dependencies {
-        classpath("net.serenity-bdd:serenity-gradle-plugin:3.2.5")
+        classpath 'org.sonarsource.scanner.gradle:sonarqube-gradle-plugin:3.4.0.2513'
+        classpath 'org.ajoberstar:gradle-jacoco:0.1.0'
+        classpath 'org.sonarqube.gradle:gradle-sonarqube-plugin:1.0'
+        classpath "net.serenity-bdd:serenity-gradle-plugin:3.4.2"
     }
 }
 
-ext {
-    serenityVersion = '3.2.5'
-    serenityCucumberVersion = '3.2.5'
-    lombokVersion = '1.18.30'
-    slf4jVersion = '2.0.3'
-    jacksonVersion = '2.13.4'
-    hamcrestVersion = '2.2'
-    javaFakerVersion = '1.0.2'
-    awaitibilityVersion = '4.2.0'
-    awaitibilityProxyVersion = '3.1.6'
-    awsSdkVersion = '1.12.319'
-    univocityParsersVersion = '2.8.4'
-    hibernateVersion = '5.4.18.Final'
-    jsonSchemaValidatorVersion = '4.5.1'
-    jsonSimpleVersion = '1.1.1'
-    commonsConfigurationVersion = '1.10'
-    mailinatorClientVersion = '1.6'
-    jerseyServerVersion = '2.29.1'
-    bindApiVersion = '2.3.2'
-    jaxbRuntimeVersion = '2.3.2'
+test {
+    ignoreFailures = true
+    systemProperties(System.getProperties())
 }
 
-apply plugin: 'java'
-apply plugin: 'idea'
-apply plugin: 'eclipse'
-apply plugin: 'net.serenity-bdd.aggregator'
-sourceCompatibility = 1.8
-targetCompatibility = 1.8
-
-tasks.withType(JavaCompile) {
-    options.encoding = 'UTF-8'
+repositories {
+    repositories {
+        maven {
+            url "https://repo1.maven.org/maven2/"
+        }
+    }
+    mavenCentral()
 }
 
 
 dependencies {
-    // Test Dependencies
-    testImplementation group: 'net.serenity-bdd', name: 'serenity-core', version: "$rootProject.ext.serenityVersion"
-    testImplementation group: 'net.serenity-bdd', name: 'serenity-junit', version: "$rootProject.ext.serenityVersion"
-    testImplementation group: 'junit', name: 'junit', version: '4.12'
-    testImplementation group: 'org.assertj', name: 'assertj-core', version: '3.8.0'
-    testImplementation group: 'org.slf4j', name: 'slf4j-simple', version: '1.7.7'
-    testImplementation 'io.github.bonigarcia:webdrivermanager:5.7.0'
-    testImplementation "org.awaitility:awaitility:$rootProject.ext.awaitibilityVersion"
+    implementation('net.serenity-bdd:serenity-core:3.6.0')
+    implementation('net.serenity-bdd:serenity-junit:3.6.0')
+    implementation('net.serenity-bdd:serenity-screenplay:3.6.0')
+    implementation('net.serenity-bdd:serenity-screenplay-webdriver:3.6.0')
+    implementation('com.google.guava:guava:31.1-jre')
+    implementation('net.serenity-bdd:serenity-cucumber:3.6.0')
+    implementation group: 'io.appium', name: 'java-client', version: '8.3.0'
+    implementation('org.jvnet.com4j:com4j:2.1')
+    implementation group: 'org.seleniumhq.selenium', name: 'selenium-java', version: '4.8.1'
+    testImplementation group: 'org.junit.jupiter', name: 'junit-jupiter-api', version: '5.9.2'
+    implementation group: 'net.serenity-bdd', name: 'serenity-rest-assured', version: '3.6.0'
+    implementation('org.slf4j:slf4j-simple:2.0.6')
+    implementation('net.serenity-bdd:serenity-ensure:3.5.1')
+    implementation group: 'org.springframework', name: 'spring-core', version: '5.3.20'
+}
 
-    // Implementation Dependencies
-    implementation group: 'net.serenity-bdd', name: 'serenity-cucumber', version: "$rootProject.ext.serenityCucumberVersion"
-    implementation "net.serenity-bdd:serenity-core:$rootProject.ext.serenityVersion"
-    implementation "net.serenity-bdd:serenity-cucumber:$rootProject.ext.serenityVersion"
-    implementation "net.serenity-bdd:serenity-rest-assured:$rootProject.ext.serenityVersion"
-    implementation "net.serenity-bdd:serenity-screenplay-rest:$rootProject.ext.serenityVersion"
-    implementation "net.serenity-bdd:serenity-ensure:$rootProject.ext.serenityVersion"
-    implementation "net.serenity-bdd:serenity-screenplay-webdriver:$rootProject.ext.serenityVersion"
-    implementation "net.serenity-bdd.maven.plugins:serenity-maven-plugin:$rootProject.ext.serenityVersion"
-    implementation "org.hamcrest:hamcrest-core:$rootProject.ext.hamcrestVersion"
-    implementation "org.hamcrest:hamcrest-library:$rootProject.ext.hamcrestVersion"
-    implementation "commons-configuration:commons-configuration:$rootProject.ext.commonsConfigurationVersion"
-    compileOnly "org.projectlombok:lombok:$rootProject.ext.lombokVersion"
-    annotationProcessor "org.projectlombok:lombok:$rootProject.ext.lombokVersion"
-    implementation 'io.github.bonigarcia:webdrivermanager:5.7.0'
-
-}
-test {
-    testLogging.showStandardStreams = true
-    systemProperties System.getProperties()
-    finalizedBy(aggregate)
-}
-tasks.withType(JavaCompile) {
-    options.encoding('UTF-8')
-}
-gradle.startParameter.continueOnFailure = true
+compileJava.options.encoding = 'UTF-8'
+gradle.startParameter.continueOnFailure=true
